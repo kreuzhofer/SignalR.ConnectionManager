@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.ConnectionManager", "SignalR.ConnectionManager\SignalR.ConnectionManager.csproj", "{6AD05BC6-AF45-4839-B3DF-7453233F7865}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AD05BC6-AF45-4839-B3DF-7453233F7865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AD05BC6-AF45-4839-B3DF-7453233F7865}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AD05BC6-AF45-4839-B3DF-7453233F7865}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AD05BC6-AF45-4839-B3DF-7453233F7865}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
