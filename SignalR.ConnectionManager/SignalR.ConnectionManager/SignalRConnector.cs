@@ -14,10 +14,10 @@ namespace SignalR.ConnectionManager
         public SignalRConnector(ISignalRConnectorConfiguration configuration)
         {
             _configuration = configuration;
-            InitializeComponent();
+            Task.Run(() => InitializeComponent());
         }
 
-        private async void InitializeComponent()
+        private void InitializeComponent()
         {
             OnDisconnected();
             _hubConnection.Closed += OnDisconnected;
@@ -85,10 +85,10 @@ namespace SignalR.ConnectionManager
             get { return _hubConnection != null && _hubConnection.State == ConnectionState.Connected; }
         }
 
-        public Task Invoke(string hub, string method, params object[] args)
+        public async Task Invoke(string hub, string method, params object[] args)
         {
             var proxy = GetProxy(hub);
-            return proxy.Invoke(method, args);
+            await proxy.Invoke(method, args);
         }
 
         public void Subscribe(string hub, string eventName)
