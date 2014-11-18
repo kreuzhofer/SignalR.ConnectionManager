@@ -3,5 +3,6 @@
     public interface ISignalRConnectorConfiguration
     {
         string ServiceUrl { get; }
+        string[] RequestedHubProxies { get; set; }
     }
 }

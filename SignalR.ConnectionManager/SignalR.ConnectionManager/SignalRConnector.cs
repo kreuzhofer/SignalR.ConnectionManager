@@ -37,9 +37,15 @@ namespace SignalR.ConnectionManager
                 _hubProxies.Clear();
             }
 
-            _hubConnection = new HubConnection(_configuration.ServiceUrl);
-            _hubConnection.TraceLevel = TraceLevels.All;
-            _hubConnection.TraceWriter = new DebugWriter();
+            _hubConnection = new HubConnection(_configuration.ServiceUrl)
+            {
+                TraceLevel = TraceLevels.All,
+                TraceWriter = new DebugWriter()
+            };
+            foreach (var hub in _configuration.RequestedHubProxies)
+            {
+                _hubProxies[hub] = _hubConnection.CreateHubProxy(hub);
+            }
 
             bool result;
             do
@@ -67,17 +73,11 @@ namespace SignalR.ConnectionManager
 
         private IHubProxy GetProxy(string hub)
         {
-            IHubProxy proxy;
             if (!_hubProxies.ContainsKey(hub))
             {
-                proxy = _hubConnection.CreateHubProxy(hub);
-                _hubProxies[hub] = proxy;
+                return null;
             }
-            else
-            {
-                proxy = _hubProxies[hub];
-            }
-            return proxy;
+            return _hubProxies[hub];
         }
 
         public bool IsConnected
