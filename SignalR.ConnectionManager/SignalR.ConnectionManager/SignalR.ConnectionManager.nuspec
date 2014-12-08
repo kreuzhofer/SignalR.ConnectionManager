@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$-PreRelease</version>
+    <title>$title$</title>
+    <authors>Daniel Kreuzhofer (@dkreuzh)</authors>
+    <owners>Daniel Kreuzhofer (@dkreuzh)</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/kreuzhofer/SignalR.ConnectionManager</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A .NET SignalR Client Connection Manager to automatically resume and keep up connections to SignalR servers in unstable network environments like mobile clients.</description>
+    <releaseNotes>Initial version. Still in development.</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>SignalR</tags>
+  </metadata>
+</package>
