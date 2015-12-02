@@ -1,12 +1,15 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR.Client;
+using Microsoft.AspNet.SignalR.Client.Hubs;
 
 namespace SignalR.ConnectionManager
 {
     public class SignalRConnector : ISignalRConnector
     {
+        public event EventHandler OnConnected;
         private ISignalRConnectorConfiguration _configuration;
         private HubConnection _hubConnection;
         private readonly ConcurrentDictionary<string, IHubProxy> _hubProxies = new ConcurrentDictionary<string, IHubProxy>();
@@ -14,6 +17,10 @@ namespace SignalR.ConnectionManager
         public SignalRConnector(ISignalRConnectorConfiguration configuration)
         {
             _configuration = configuration;
+        }
+
+        public void Start()
+        {
             Task.Run(() => InitializeComponent());
         }
 
@@ -69,6 +76,10 @@ namespace SignalR.ConnectionManager
                 }
             } while (!result);
             _hubConnection.Closed += OnDisconnected;
+            if (OnConnected != null)
+            {
+                OnConnected(this, new EventArgs());
+            }
         }
 
         private IHubProxy GetProxy(string hub)
@@ -91,10 +102,10 @@ namespace SignalR.ConnectionManager
             await proxy.Invoke(method, args);
         }
 
-        public void Subscribe(string hub, string eventName)
+        public Subscription Subscribe(string hub, string eventName)
         {
             var proxy = GetProxy(hub);
-            proxy.Subscribe(eventName);
+            return proxy.Subscribe(eventName);
         }
     }
 }

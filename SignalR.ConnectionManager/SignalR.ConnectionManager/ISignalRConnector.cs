@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNet.SignalR.Client.Hubs;
 
 namespace SignalR.ConnectionManager
 {
@@ -6,6 +7,6 @@ namespace SignalR.ConnectionManager
     {
         bool IsConnected { get; }
         Task Invoke(string hub, string method, params object[] args);
-        void Subscribe(string hub, string eventName);
+        Subscription Subscribe(string hub, string eventName);
     }
 }
