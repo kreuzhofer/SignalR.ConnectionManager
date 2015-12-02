@@ -10,7 +10,7 @@ namespace HubTest.WebApp.Hubs
     {
         public void Hello()
         {
-            Clients.All.hello();
+            Clients.All.hello("This is the message", "second parameter", 100, true, DateTime.UtcNow);
         }
     }
 }
