@@ -51,7 +51,7 @@ namespace HubTest.UWP
         private void SubOnReceived(IList<JToken> list)
         {
             Debug.WriteLine("SubOnReceived");
-            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => textBox.Text += "SubOnReceived\n\r");
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => textBox.Text += String.Format("SubOnReceived {0} {1} {2} {3} {4}\n\r", list[0], list[1], list[2], list[3], list[4]));
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
